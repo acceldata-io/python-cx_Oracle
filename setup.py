@@ -3,7 +3,6 @@ Setup script for cx_Oracle.
 """
 
 import os
-import pkg_resources
 import setuptools
 import sys
 
@@ -12,8 +11,6 @@ if sys.version_info[:2] < (3, 6):
     raise Exception("Python 3.6 or higher is required. " +
             "For python 2, use 'pip install cx_Oracle==7.3'")
 
-# check minimum supported version of setuptools
-pkg_resources.require("setuptools>=40.6.0")
 
 # define build constants
 BUILD_VERSION = "8.3.0"
@@ -73,4 +70,5 @@ extension = setuptools.Extension(
 setuptools.setup(
         version=BUILD_VERSION,
         data_files=[ ("cx_Oracle-doc", ["LICENSE.txt", "README.txt"]) ],
+        install_requires=["setuptools>=40.6.0"],
         ext_modules=[extension])
